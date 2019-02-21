@@ -44,7 +44,7 @@
 #' infile2 <- system.file("/extdata/", "testDatamerge2.xlsx", package = "tempMLMOI")
 #' moimerge(infile1, nummtd1 = 1, infile2, nummtd2 = 2, keepmtd = TRUE)
 #'
-moimerge <- function(file1, file2, nummtd1, nummtd2, keepmtd = F, export = NULL){
+moimerge <- function(file1, file2, nummtd1, nummtd2, keepmtd = F, export = NULL) {
     nummtd1 <- nummtd1 + 2
     nummtd2 <- nummtd2 + 2
     "First dataset"
