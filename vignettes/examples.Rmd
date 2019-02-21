@@ -18,15 +18,17 @@ knitr::opts_chunk$set(
 
 The function is called using the `moimport(file,...)`, where the mandatory argument `file` is a string specifying the path of the file to be imported.
 
-```{r, out.width='50%', include=TRUE, fig.align='center', fig.cap='...'}
+```{r, out.width='50%',include=TRUE, fig.align='center', fig.cap='...'}
 library(tempMLMOI)
 figbasic <- system.file("extdata", "basic-1.png", package = "tempMLMOI")
-print(figbasic)
 knitr::include_graphics(figbasic)
 ```
+
 
 ```{r}
 infile <- system.file("extdata", "testDatabasic.xlsx", package = "tempMLMOI")
 moimport(infile)
 ```
+
+Examples continue...
 
