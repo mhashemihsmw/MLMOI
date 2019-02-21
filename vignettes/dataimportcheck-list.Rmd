@@ -1,0 +1,41 @@
+---
+title: "Data Import Check-list"
+output: rmarkdown::html_vignette
+font_adjustment: 5
+vignette: >
+  %\VignetteIndexEntry{Data Import Check-list}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+<style type="text/css">
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: Verdana, Geneva, sans-serif;
+  }
+  </style>
+  
+ <span style="color:Darkblue">Before using the function `moimport`, users need to check the dataset to see if it meets the following requirements:</span>
+------
+
+1. The dataset is placed in the  <span style="color:green">first worksheet</span> of the excel file and contains only <span style="color:green"> molecular data</span>,
+
+1. <span style="color:green">Sample IDs</span> are placed in the <span style="color:green">first column</span>,
+
+1. <span style="color:green"> Marker labels</span> are placed in the <span style="color:green">first row</span>,
+
+1. <span style="color:green">Sample IDs</span> and <span style="color:green">marker labels</span> must be <span style="color:green">unique</span>,
+
+1. Entries which contain <span style="color:green">word or sentences are removed</span> from data,
+
+1. <span style="color:green">Metdata columns</span> are placed between sample IDs and molecular marker columns.
+
+1. In case of <span style="color:green">multiple worksheet</span> dataset, all worksheets need to meet the above requirements.
+
+1. In case of <span style="color:green">transposed datasets</span>, columns will be swaped with rows.

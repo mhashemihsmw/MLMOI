@@ -1,0 +1,64 @@
+---
+title: "Arguments of Import Function"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Arguments of Import Function}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+## `molecular` & `coding`
+Different classes of coding under various types of molecular type. The options in bold are default values:
+
+|`molecular`|     `coding`    |
+|:----------|:----------------|
+|`'STR'`    | **`'integer'`** |
+|		        | `'nearest'`     |
+|		        | `'ceil'`        |
+|		        | `'floor'`       |
+|`'SNP'`    | **`'4let'`**    | 
+|		        | `'IUPAC'`       |
+|`'amino'`  | **`'3let'`**    |  
+|		        | `'1let'`        |
+|		        | `'full'`        |
+|`'codon'`  | **`'triplet'`** | 
+|		        | `'compact'`     |
+
+
+
+## Different values of arguments
+The options and their possible values of `moimport` function. The values in bold are default values. Admissible values for option `coding` for different values of option `molecular` are marked with different symbols.
+
+|argument       | values                   | description                                                     |
+|:--------------|:-------------------------|:----------------------------------------------------------------|
+|`multsheets`   | **`'FALSE'`**            | single worksheet dataset                                         
+|		            | `'TRUE'`                   | multiple worksheet dataset
+|`nummtd`       | **`0`**                  | no metadata column
+|               | `n`                      | number of metadata columns 
+|`keepmtd`      | **`'FALSE'`**            | ignores metadata during exporting
+|		            | `TRUE`                   | keeps and checks metadata
+|`transposed`   | **`'FALSE'`**            | samples in rows, markers in columns
+|		            | `TRUE`                   | markers in rows, samples in columns
+|`molecular`    | **`'STR'`**$^*$          | short tandem repeats
+|        		    | `'SNP'`$^+$              | single nucleotide polymorphisms
+|       		    | `'amino'`$^\S$           | amino acids
+|        		    | `'codon'`$^{++}$           | three DNA bases
+|`coding`       | **`'integer'`**$^*$      | STR data where entries are integer values
+|       		    | `'nearest'`$^*$          | STR data where real values are converted to the nearest intger 
+|      		      | `'ceil'`$^*$             | STR data where ceiling function is applied to real values 
+|        		    | `'floor'`$^*$            | STR data in floor function is applied to real values
+|        		    | **`'4let`'**$^+$         | SNP data in four-letter code i.e. 'A', 'C', 'G', 'T'
+|        		    | `'iupac'`$^+$            | SNP data in IUPAC notation
+|        		    | **`'3let`'**$^\S$        | amino acids with 3-letter designations 
+|        		    | `'1let'`$^\S$            | amino acids with 1-letter designations
+|        		    | `'full'`$^\S$            | amino acids with their full names
+|        		    | **`'triplet`'**$^{++}$   | codons where the four-letter codes are used for encoding
+|        		    | `'compact'`$^{++}$       | codons where IUPAC coding is used for encoding
+
+
