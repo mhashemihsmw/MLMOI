@@ -20,6 +20,7 @@
 #'  \item single nucleotide polymorphisms (SNPs); \item
 #'  amino acids; \item codons (base triplets). }
 #'
+#'
 #'@section Import function: The function \code{moimport()}, is
 #'  designed to import molecular data. It imports molecular
 #'  data in various formats and transforms them into a
