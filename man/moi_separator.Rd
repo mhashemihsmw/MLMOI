@@ -2,14 +2,14 @@
 % Please edit documentation in R/moibasic.R
 \name{moi_separator}
 \alias{moi_separator}
-\title{Finds the most frequent sparator}
+\title{Finds the most frequent separator}
 \usage{
-moi_separator(set_d, nummtd, cha, rw_col, nwsh)
+moi_separator(set_d, nummtd, cha, rw_col, nwsh, multsh)
 }
 \arguments{
 \item{set_d}{data frame; imported dataset.}
 
-\item{nummtd}{numeric; number of metadata coumns plus 2.}
+\item{nummtd}{numeric; number of metadata columns plus 2.}
 
 \item{cha}{string vector; vector of punctuation
 characters. See \code{\link{moi_prerequisite}}.}
@@ -21,6 +21,9 @@ Namely, \code{c("rows ", "row ", "column ", "columns
 
 \item{nwsh}{numeric; worksheet number in multiple
 worksheet dataset.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a warning is generated reporting inconsistencies
@@ -37,6 +40,6 @@ This function is activated when the data is
   inconsistencies with a warning.
 }
 \seealso{
-For further details see: \code{\link{moimport}}.
+For further details see: \code{moimport}.
 }
 \keyword{internal}

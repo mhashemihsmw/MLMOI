@@ -4,7 +4,17 @@
 \alias{moi_administrator}
 \title{Administrator function}
 \usage{
-moi_administrator(set_d, s_total, m_total, nummtd, cha, rw_col, nwsh)
+moi_administrator(
+  set_d,
+  s_total,
+  m_total,
+  nummtd,
+  cha,
+  rw_col,
+  nwsh,
+  transposed,
+  multsh
+)
 }
 \arguments{
 \item{set_d}{data frame; imported dataset.}
@@ -25,6 +35,9 @@ Namely, \code{c("rows ", "row ", "column ", "columns
 
 \item{nwsh}{numeric; worksheet number in multiple
 worksheet dataset.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list of following elements: 1) rows in which
@@ -42,6 +55,6 @@ a list of following elements: 1) rows in which
 Administrator function
 }
 \seealso{
-For further details see: \code{\link{moimport}}.
+For further details see: \code{moimport}.
 }
 \keyword{internal}

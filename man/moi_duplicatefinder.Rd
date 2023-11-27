@@ -21,7 +21,7 @@ Namely, \code{c("rows ", "row ", "column ", "columns
 }
 \value{
 a warning which informs the user of forbidden
-  repitition of sample ID's or marker labels.
+  repetition of sample ID's or marker labels.
 }
 \description{
 Sample IDs need to be uniquely assigned to
@@ -32,7 +32,7 @@ Sample IDs need to be uniquely assigned to
   repetitions.
 }
 \seealso{
-For further details see: \code{\link{moimport}}
+For further details see: \code{moimport}
   \code{\link{moi_labels}}.
 }
 \keyword{internal}

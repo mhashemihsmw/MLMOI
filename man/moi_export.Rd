@@ -2,13 +2,13 @@
 % Please edit documentation in R/moibasic.R
 \name{moi_export}
 \alias{moi_export}
-\title{Exports the dataset in standarad format to a new excel
+\title{Exports the dataset in standard format to a new excel
 file.}
 \usage{
 moi_export(export, final)
 }
 \arguments{
-\item{export}{export string; the path where the imported data is
+\item{export}{string; the path where the imported data is
 stored in standardized format.}
 
 \item{final}{data frame; modified dataset in standard
@@ -24,6 +24,6 @@ This function exports the modified dataset
 }
 \seealso{
 For further details, please see the following
-  functions: \code{\link{moimport}}.
+  functions: \code{moimport}.
 }
 \keyword{internal}

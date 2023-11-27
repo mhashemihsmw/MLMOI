@@ -3,12 +3,12 @@
 \name{moi_prerequisite}
 \alias{moi_prerequisite}
 \title{Contains different character vectors needed for importing
-dataset}
+molecular dataset}
 \usage{
 moi_prerequisite()
 }
 \description{
 Contains different character vectors needed for importing
-dataset
+molecular dataset
 }
 \keyword{internal}

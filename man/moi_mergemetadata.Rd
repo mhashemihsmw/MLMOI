@@ -4,7 +4,7 @@
 \alias{moi_mergemetadata}
 \title{Merges metadata}
 \usage{
-moi_mergemetadata(tempmtd, mtdall, samall)
+moi_mergemetadata(tempmtd, mtdall, samall, multsh)
 }
 \arguments{
 \item{tempmtd}{matrix; matrix of temporary metadata.}
@@ -14,6 +14,9 @@ labels.}
 
 \item{samall}{string vector; vector of all sample IDs in
 the worksheet.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 list of following elements: 1) unique metadata
@@ -23,6 +26,6 @@ list of following elements: 1) unique metadata
 Merges metadata
 }
 \seealso{
-For further details see: \code{\link{moimport}}.
+For further details see: \code{moimport}.
 }
 \keyword{internal}

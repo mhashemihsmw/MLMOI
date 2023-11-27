@@ -2,9 +2,17 @@
 % Please edit documentation in R/moimerge.R
 \name{moimerge}
 \alias{moimerge}
-\title{Merges two molecular datasets}
+\title{Merges two molecular datasets.}
 \usage{
-moimerge(file1, file2, nummtd1, nummtd2, keepmtd = F, export = NULL)
+moimerge(
+  file1,
+  file2,
+  nummtd1,
+  nummtd2,
+  keepmtd = FALSE,
+  export = NULL,
+  keepwarnings = NULL
+)
 }
 \arguments{
 \item{file1}{string; specifying the path of the first
@@ -14,11 +22,11 @@ dataset.}
 dataset.}
 
 \item{nummtd1}{numeric; number of metadata columns (see
-\code{\link{moimport}}) in the first file (default as
+\code{\link{moimport}()}) in the first file (default as
 \code{0}).}
 
 \item{nummtd2}{numeric; number of metadata columns (see
-\code{\link{moimport}}) in the second file (default as
+\code{\link{moimport}()}) in the second file (default as
 \code{0}).}
 
 \item{keepmtd}{logical; determining whether metadata
@@ -26,38 +34,46 @@ dataset.}
 \code{TRUE}).}
 
 \item{export}{string; the path where the data is stored.}
+
+\item{keepwarnings}{string; the path where the warnings
+are stored.}
 }
 \value{
 The output is a dataset in standard format which
-  constituts of an assembly of the input datasets.
+  constitutes of an assembly of the input datasets.
 }
 \description{
 The function is designed to merge two
-  datasets from separate \file{.xlsx}-files. The data in
-  each \file{.xlsx}-files is placed in the first
+  datasets from separate Excel files. The data in
+  each Excel file is placed in the first
   worksheet.
 }
 \details{
 The two datasets should be already in standard
-  format (see (see \code{\link{moimport}})). The datasets
+  format (see \code{\link{moimport}()}). The datasets
   are placed in the first worksheet of the two different
-  \file{.xlsx}-files. Notice that marker labels (=column
+  Excel files. Notice that marker labels (=column
   labels) need to be unique.
 }
 \section{Warnings}{
  Warnings are generated if potential
-  inconsistencies are detected. E.g.if the same sample
+  inconsistencies are detected. E.g., if the same sample
   occurs in both datasets and have contradicting metadata
-  entries.
+  entries. The function only prints the first 50 warnings.
+  If the number of warnings are more than 50, the user is
+  recommended to set the argument \code{keepwarnings},
+  in order to save the warnings in an Excel file.
 }
 
 \examples{
-infile1 <- system.file("/extdata/", "testDatamerge1.xlsx", package = "tempMLMOI")
-infile2 <- system.file("/extdata/", "testDatamerge2.xlsx", package = "tempMLMOI")
-moimerge(infile1, nummtd1 = 1, infile2, nummtd2 = 2, keepmtd = TRUE)
+#The datasets 'testDatamerge1.xlsx' and 'testDatamerge1.xlsx' are already in standard format:
+
+infile1 <- system.file("extdata", "testDatamerge1.xlsx", package = "MLMOI")
+infile2 <- system.file("extdata", "testDatamerge2.xlsx", package = "MLMOI")
+outfile <- moimerge(infile1, infile2, nummtd1 = 1, nummtd2 = 2, keepmtd = TRUE)
 
 }
 \seealso{
 To import and transform data into standard
-  format, please see the function \code{\link{moimport}}.
+  format, please see the function \code{\link{moimport}()}.
 }

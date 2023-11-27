@@ -4,22 +4,52 @@
 \alias{moi_empty}
 \title{Reports and deletes empty rows/columns}
 \usage{
-moi_empty(set_d, nummtd)
+moi_empty(
+  set_d,
+  setnoempty,
+  nummtd,
+  rw_col,
+  multsheets,
+  alllabels,
+  molecular,
+  molid,
+  n
+)
 }
 \arguments{
 \item{set_d}{data frame; imported dataset.}
 
-\item{nummtd}{numeric; number of metadata coumns plus 2.}
+\item{setnoempty}{data frame; imported dataset.}
+
+\item{nummtd}{numeric; number of metadata columns plus 2.}
+
+\item{rw_col}{string vector; variable used to switch
+between row and column in case of transposed data.
+Namely, \code{c("rows ", "row ", "column ", "columns
+")}.}
+
+\item{multsheets}{logical; indicating whether data is
+contained in a single or multiple worksheets. The
+default value is \code{ multsheets = FALSE},
+corresponding to data contained in a single worksheet.}
+
+\item{alllabels}{all the marker labels.}
+
+\item{molecular}{molecular argument.}
+
+\item{molid}{identifier. It is greater than zero when
+molecular argument is just a single value.}
 }
 \value{
-A list of three elements: 1) list of empty rows,
-  2) list of empty columns, 3) contains the dataset with
-  deleted empty rows/columns.
+A list of 4 elements: 1) dataset without empty
+  rows/columns; 2) dataset with empty rows/columns; 3)
+  coorected labels; 4)corrected number of metadata
+  columns.
 }
 \description{
 Reports and deletes empty rows/columns.
 }
 \seealso{
-For further details see: \code{\link{moimport}}.
+For further details see: \code{moimport}.
 }
 \keyword{internal}

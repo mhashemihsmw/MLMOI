@@ -7,6 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -19,23 +20,22 @@ Nucleotide ambiguity code as defined in DNA Sequence Assembler.
 
 |Symbol | Description | Bases represented | Complement |
 |---|:--------------|:------------:|:----------:|
-| A | Adenine        | A -- --  -- | V |
+| A | Adenine        | A -- -- -- | V |
 | C | Cytosine       | -- C --  -- | H |
 | G | Guanine        | -- -- G  -- | D |
 | T | Thymine        | -- -- -- T  | B |
 | W | Weak           | A  -- -- T  | S |
-| S | Strong         | -- C  G  -- | W |
-| M | aMino          | A  C  -- -- | K |
+| S | Strong         | -- C G  -- | W |
+| M | aMino          | A   C  -- -- | K |
 | K | Keto           | -- -- G  T  | M |
 | R | puRine         | A  -- G  -- | Y |
 | Y | pYrimidine     | -- C  -- T  | R |
-| B | not A          | -- C  G  T  | A |
-| D | not C          | A  -- G  T  | C |
-| H | not G          | A  C  -- T  | G |
-| V | not T          | A  C  G  -- | T |
-| N | any Nucleotide | A  C  G  T  | Z |
+| B | not A          | -- C   G   T  | A |
+| D | not C          | A  -- G   T  | C |
+| H | not G          | A   C  -- T  | G |
+| V | not T          | A   C  G  -- | T |
+| N | any Nucleotide | A   C  G  T  | Z |
 | Z | Zero           | -- -- -- -- | N |
-
 
 ## Amino Acids and Codons
 The standard ambiguity codes for nucleotides and for the one-letter and three-letter designations

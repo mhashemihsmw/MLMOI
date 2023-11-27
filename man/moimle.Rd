@@ -2,16 +2,18 @@
 % Please edit documentation in R/moimle.R
 \name{moimle}
 \alias{moimle}
-\title{Estimates prevalences, frequency spectra and MOI parameter}
+\title{Estimates prevalences, frequency spectra and MOI parameter.}
 \usage{
 moimle(file, nummtd = 0, bounds = c(NA, NA))
 }
 \arguments{
-\item{file}{string; specifies the path to the file to be
-imported. The dataset must be in standard format (see
-\code{\link{moimport}}). The first column must contain
-sample IDs. Adjacent columns can contain metadata,
-followed by columns corresponding to molecular markers.}
+\item{file}{string or data.frame; if file is a path it
+must specify the path to the file to be imported. The
+dataset can also be a data.frame object in R. The dataset
+must be in standard format (see \code{\link{moimport}()}).
+The first column must contain sample IDs. Adjacent columns
+can contain metadata, followed by columns corresponding
+to molecular markers.}
 
 \item{nummtd}{numeric; number of metadata columns (e.g.
 date, sample location, etc.) in the dataset (default
@@ -27,47 +29,47 @@ employed. If one allele is contained in every sample,
 the upper bound is employed.}
 }
 \value{
-\code{moimle} returns a nested list,  where the
+\code{moimle()} returns a nested list,  where the
  outer elements correspond to molecular markers in the
  dataset. The inner elements for each molecular marker
  contain the following information: \enumerate{\item
- sample size, \item allele prevalence counts, \item log
- likelihood at MLE, \item maximum-likelihood estimate of
- MOI parameter, \item maximum-likelihood estimates of
- lineage frequencies.}
+ sample size, \item allele prevalence counts, \item
+ observed prevalences \item log likelihood at MLE, \item
+ maximum-likelihood estimate of MOI parameter, \item
+ maximum-likelihood estimates of lineage frequencies.}
 }
 \description{
-\code{moimle} derives the maximum-likelihood
+\code{moimle()} derives the maximum-likelihood
  estimate (MLE) of the MOI parameter (Poisson parameter)
  and the lineage (allele) frequencies for each molecular
  marker in a dataset. Additionally, the lineage
  prevalence counts are derived.
 }
 \details{
-\code{moimle} requires a dataset in standard
+\code{moimle()} requires a dataset in standard
  format which is free of typos (e.g. incompatible and
  unidentified entries). Therefore, users need to
  standardize the dataset by employing the
- \code{\link{moimport}} function.
+ \code{\link{moimport}()} function.
 
  If one or more molecular markers contain pathological
  data, the ML estimate for the Poisson parameter is
  either 0 or does not exist. Both estimates are
- meaningless, however in the former case frequency
+ meaningless, however, in the former case frequency
  estimates exist while they do not in the later. By
  setting the option \code{bounds} as a range for MOI
  parameter \eqn{\lambda}. i.e., \code{bounds = }
  c(<\eqn{\lambda_min}>, <\eqn{\lambda_max}>), this
  problem is bypassed and the ML estimates are calculated
- by profilling at \eqn{\lambda_min} or \eqn{\lambda_max}.
+ by profiling at \eqn{\lambda_min} or \eqn{\lambda_max}.
  If no super-infections are observed at a marker,
- \code{moimle} uses \eqn{\lambda_min} as the MOI
+ \code{moimle()} uses \eqn{\lambda_min} as the MOI
  parameter estimate, \eqn{\lambda_max} if one lineage is
  present in all samples. For regular data, the
  profile-likelihood estimate using \eqn{\lambda_min} or
  \eqn{\lambda_max} is returned depending on whether the
- ML estimate falls below \eqn{\lambda_min} or
- above \eqn{\lambda_max}.
+ ML estimate falls below \eqn{\lambda_min} or above
+ \eqn{\lambda_max}.
 }
 \section{Warnings}{
  Warnings are issued, if data is
@@ -75,20 +77,17 @@ the upper bound is employed.}
  \code{bounds} is set, but MLE of MOI parameter at a
  molecular marker takes a lower or higher value than
  \eqn{\lambda_min or \lambda_max} respectively, a warning
- is generated. However, the MLE for lineage frequencies
- (from profile-likelihood) are still derived.
+ is generated.
 }
 
 \examples{
-##datasets can be found in the package
 
-moimle(file = system.file("/extdata/", "testDatamerge1.xlsx", package = "tempMLMOI"),
- nummtd = 3)
-
-
+#basic data analysis
+infile1 <- system.file("extdata", "testDatamerge1.xlsx", package = "MLMOI")
+mle1 <- moimle(infile1, nummtd = 1)
 
 }
 \seealso{
 To import and transform data to standard format,
- please see the function \code{\link{moimport}}.
+ please see the function \code{\link{moimport}()}.
 }

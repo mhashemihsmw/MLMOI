@@ -4,9 +4,29 @@
 \alias{moi_marker}
 \title{Extracts lineages of samples at a specific marker}
 \usage{
-moi_marker(col_j, c_l, sam, samorder, conm, cons, molecular, coding,
-  cha_num, cha_string, ambeguity_code, represented_bases, aa_1, aa_2,
-  let_3, amino_acid, aa_symbol, compact, codon_s, rw_col)
+moi_marker(
+  col_j,
+  c_l,
+  sam,
+  samorder,
+  conm,
+  cons,
+  molecular,
+  coding,
+  cha_num,
+  cha_string,
+  ambeguity_code,
+  represented_bases,
+  aa_1,
+  aa_2,
+  let_3,
+  amino_acid,
+  aa_symbol,
+  compact,
+  codon_s,
+  rw_col,
+  multsh
+)
 }
 \arguments{
 \item{col_j}{vector; column vector of a specific marker.}
@@ -65,6 +85,9 @@ in compact form.}
 between row and column in case of transposed data.
 Namely, \code{c("rows ", "row ", "column ", "columns
 ")}.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list with the following elements: 1) a list
@@ -79,16 +102,16 @@ a list with the following elements: 1) a list
 For a specific marker, the function goes
   from one sample to another and finds lineages with the
   help of the following functions:
-  \code{\link{corrector_str}} along with
+  \code{\link{corrector_numeric}} along with
   \code{\link{decoder_str}},
-  \code{\link{corrector_aminoacid}} along with
+  \code{\link{corrector_string}} along with
   \code{\link{decoder_aminoacid}} and
-  \code{\link{corrector_snp}} along with
+  \code{\link{corrector_string}} along with
   \code{\link{decoder_snp}}. Each of these functions are
   suitable for a particular type of molecular data.
 }
 \seealso{
 For further details, please see the following
-  functions: \code{\link{moimport}}
+  functions: \code{moimport}
 }
 \keyword{internal}

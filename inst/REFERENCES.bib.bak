@@ -1,0 +1,67 @@
+﻿@Manual{R,
+  author = {{R Core Team}},
+  title = {R: A Language and Environment for Statistical Computing},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2016},
+  note = {{ISBN} 3-900051-07-0},
+  url = {https://www.R-project.org/},
+}
+
+@article{ihaka:1996,
+  	Author = {Ihaka, Ross and Gentleman, Robert},
+	Journal = {Journal of Computational and Graphical Statistics},
+	Number = 3,
+	Pages = {299--314},
+	Title = {R: A Language for Data Analysis and Graphics},
+	Volume = 5,
+	Year = 1996,
+    url = {https://doi.org/10.1080/10618600.1996.10474713}
+}
+
+
+
+@Article{SchneiderEscalante2014,
+	Author                   = {Schneider, Kristan A. AND Escalante, Ananias A.},
+	Title                    = {A Likelihood Approach to Estimate the Number of Co-Infections},
+	Journal                  = {PLoS ONE},
+	Year                     = 2014,
+	Month                    = 07,
+	Number                   = 7,
+	Pages                    = {e97899},
+	Volume                   = {9},
+	Publisher                = {Public Library of Science},
+	Url                      = {http://dx.doi.org/10.1371\%2Fjournal.pone.0097899}
+}
+
+
+
+@article{Schneider2018,
+	author = {Schneider, Kristan Alexander},
+	journal = {PLOS ONE},
+	publisher = {Public Library of Science},
+	title = {Large and finite sample properties of a maximum-likelihood estimator for multiplicity of infection},
+	year = {2018},
+	month = {04},
+	volume = {13},
+	pages = {1-21},
+	abstract = {Reliable measures of transmission intensities can be incorporated into metrics for monitoring disease-control interventions. Genetic (molecular) measures like multiplicity of infection (MOI) have several advantages compared with traditional measures, e.g., R0. Here, we investigate the properties of a maximum-likelihood approach to estimate MOI and pathogen-lineage frequencies. By verifying regulatory conditions, we prove asymptotical unbiasedness, consistency and efficiency of the estimator. Finite sample properties concerning bias and variance are evaluated over a comprehensive parameter range by a systematic simulation study. Moreover, the estimator’s sensitivity to model violations is studied. The estimator performs well for realistic sample sizes and parameter ranges. In particular, the lineage-frequency estimates are almost unbiased independently of sample size. The MOI estimate’s bias vanishes with increasing sample size, but might be substantial if sample size is too small. The estimator’s variance matrix agrees well with the Cramér-Rao lower bound, even for small sample size. The numerical and analytical results of this study can be used for study design. This is exemplified by a malaria data set from Venezuela. It is shown how the results can be used to determine the necessary sample size to achieve certain performance goals. An implementation of the likelihood method and a simulation algorithm for study design, implemented as an R script, is available as S1 File alongside a documentation (S2 File) and example data (S3 File).},
+	number = {4},
+	doi = {10.1371/journal.pone.0194148}
+}
+
+
+
+@article{SchneiderEscalante2018,
+	author = {Schneider, Kristan A. AND Escalante, Ananias A.},
+	journal = {PLOS ONE},
+	publisher = {Public Library of Science},
+	title = {Correction: A Likelihood Approach to Estimate the Number of Co-Infections},
+	year = {2018},
+	month = {02},
+	volume = {13},
+	pages = {1-3},
+	abstract = {},
+	number = {2},
+	doi = {10.1371/journal.pone.0192877}
+}

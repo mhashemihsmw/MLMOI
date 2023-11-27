@@ -1,12 +1,12 @@
 ---
 title: "Standard Ambiguity Codes"
-author: "Meraj Hashemi"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Standard Ambiguity Codes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -20,51 +20,50 @@ Nucleotide ambiguity code as defined in DNA Sequence Assembler.
 
 |Symbol | Description | Bases represented | Complement |
 |---|:--------------|:------------:|:----------:|
-| A | Adenine        | A -- --  -- | V |
+| A | Adenine        | A -- -- -- | V |
 | C | Cytosine       | -- C --  -- | H |
 | G | Guanine        | -- -- G  -- | D |
 | T | Thymine        | -- -- -- T  | B |
 | W | Weak           | A  -- -- T  | S |
-| S | Strong         | -- C  G  -- | W |
-| M | aMino          | A  C  -- -- | K |
+| S | Strong         | -- C G  -- | W |
+| M | aMino          | A   C  -- -- | K |
 | K | Keto           | -- -- G  T  | M |
 | R | puRine         | A  -- G  -- | Y |
 | Y | pYrimidine     | -- C  -- T  | R |
-| B | not A          | -- C  G  T  | A |
-| D | not C          | A  -- G  T  | C |
-| H | not G          | A  C  -- T  | G |
-| V | not T          | A  C  G  -- | T |
-| N | any Nucleotide | A  C  G  T  | Z |
+| B | not A          | -- C   G   T  | A |
+| D | not C          | A  -- G   T  | C |
+| H | not G          | A   C  -- T  | G |
+| V | not T          | A   C  G  -- | T |
+| N | any Nucleotide | A   C  G  T  | Z |
 | Z | Zero           | -- -- -- -- | N |
-
 
 ## Amino Acids and Codons
 The standard ambiguity codes for nucleotides and for the one-letter and three-letter designations
 of amino acids. Notice that all the entries in the same row encodes to the corresponding amino
 acid.
 
-|Amino Acid (full)| 3-Let | 1-Let | Codons (triplets)            | Compressed (compact)|
-|:----------------|:------|:-----:|:-----------------------------|:--------------------|
-|Alanine          | Ala   | A     | GCT, GCC, GCA, GCG           | GCN                 |
-|Cysteine         | Cys   | C     | TGT, TGC                     | TGY                 |
-|Aspartic         | Asp   | D     | GAT, GAC                     | GAY                 |
-|Glutamic         | Glu   | E     | GAA, GAG                     | GAR      |
-|Phenylalanine    | Phe   | F     | TTT, TTC                     | TTY      |
-|Glycine          | Gly   | G     | GGT, GGC, GGA, GGG           | GGN      |
-|Histidine        | His   | H     | CAT, CAC                     | CAY      |
-|Isoleucine       | Ile   | I     | ATT, ATC, ATA                | ATH      |
-|Lysine           | Lys   | K     | AAA, AAG                     | AAR      |
-|Leucine          | Leu   | L     | TTA, TTG, CTT, CTC, CTA, CTG | YTR,CTN  |
-|Methionine       | Met   | M     | ATG                          |          |
-|Asparagine       | Asn   | N     | AAT, AAC                     | AAY      |
-|Proline          | Pro   | P     | CCT, CCC, CCA, CCG           | CCN      |
-|Glutamine        | Gln   | Q     | CAA, CAG                     | CAR      |
-|Arginine         | Arg   | R     | CGT, CGC, CGA, CGG, AGA, AGG | CGN, MGR |
-|Serine           | Ser   | S     | TCT, TCC, TCA, TCG, AGT, AGC | TCN, AGY |
-|Threonine        | Thr   | T     | ACT, ACC, ACA, ACG           | ACN      |
-|Valine           | Val   | V     | GTT, GTC, GTA, GTG           | GTN      |
-|Tryptophan       | Trp   | W     | TGG                          |          |
-|Tyrosine         | Tyr   | Y     | TAT, TAC                     | TAY      |
+|Amino Acid (full)| 3-Let | 1-Let | Codons (triplets)            | Compressed (compact) |
+|:----------------|:------|:-----:|:-----------------------------|:---------------------|
+|Alanine          | Ala   | A     | GCT, GCC, GCA, GCG           | GCN                  |
+|Cysteine         | Cys   | C     | TGT, TGC                     | TGY                  |
+|Aspartic         | Asp   | D     | GAT, GAC                     | GAY                  |
+|Glutamic         | Glu   | E     | GAA, GAG                     | GAR                  |
+|Phenylalanine    | Phe   | F     | TTT, TTC                     | TTY                  |
+|Glycine          | Gly   | G     | GGT, GGC, GGA, GGG           | GGN                  |
+|Histidine        | His   | H     | CAT, CAC                     | CAY                  |
+|Isoleucine       | Ile   | I     | ATT, ATC, ATA                | ATH                  | 
+|Lysine           | Lys   | K     | AAA, AAG                     | AAR                  |
+|Leucine          | Leu   | L     | TTA, TTG, CTT, CTC, CTA, CTG | YTR, CTN             |
+|Methionine       | Met   | M     | ATG                          |                      |
+|Asparagine       | Asn   | N     | AAT, AAC                     | AAY                  |
+|Proline          | Pro   | P     | CCT, CCC, CCA, CCG           | CCN                  |   
+|Glutamine        | Gln   | Q     | CAA, CAG                     | CAR                  |
+|Arginine         | Arg   | R     | CGT, CGC, CGA, CGG, AGA, AGG | CGN, MGR             |
+|Serine           | Ser   | S     | TCT, TCC, TCA, TCG, AGT, AGC | TCN, AGY             |
+|Threonine        | Thr   | T     | ACT, ACC, ACA, ACG           | ACN                  |
+|Valine           | Val   | V     | GTT, GTC, GTA, GTG           | GTN                  |
+|Tryptophan       | Trp   | W     | TGG                          |                      |
+|Tyrosine         | Tyr   | Y     | TAT, TAC                     | TAY                  |
 
 
 

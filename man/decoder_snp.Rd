@@ -4,7 +4,16 @@
 \alias{decoder_snp}
 \title{Converts ambeguity codes to represented bases}
 \usage{
-decoder_snp(y, c_l, r_w, ambeguity_code, represented_bases, coding, rw_col)
+decoder_snp(
+  y,
+  c_l,
+  r_w,
+  ambeguity_code,
+  represented_bases,
+  coding,
+  rw_col,
+  multsh
+)
 }
 \arguments{
 \item{y}{numeric vector; entries in a cell corresponding
@@ -28,6 +37,9 @@ marker.}
 between row and column in case of transposed data.
 Namely, \code{c("rows ", "row ", "column ", "columns
 ")}.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list of two elements: 1) a vector of
@@ -43,7 +55,7 @@ Translates the nucleotide ambiguity codes as
 \seealso{
 For further details see: \code{\link{moimport}},
   \code{\link{moi_marker}} and
-  \code{\link{corrector_snp}}. See also the vignette
+  \code{\link{corrector_string}}. See also the vignette
   'StandardAmbiguityCodes'.
 }
 \keyword{internal}

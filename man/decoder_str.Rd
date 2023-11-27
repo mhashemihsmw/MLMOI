@@ -4,7 +4,7 @@
 \alias{decoder_str}
 \title{Transforms entries to the desired coding class}
 \usage{
-decoder_str(y, c_l, r_w, coding, rw_col)
+decoder_str(y, c_l, r_w, coding, rw_col, multsh)
 }
 \arguments{
 \item{y}{numeric vector; entries in a cell corresponding
@@ -22,6 +22,9 @@ marker.}
 between row and column in case of transposed data.
 Namely, \code{c("rows ", "row ", "column ", "columns
 ")}.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list of two elements: 1) a vector of STR

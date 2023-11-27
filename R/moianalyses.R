@@ -45,7 +45,7 @@ mle <- function(nnk, nn){
       l0 <- l1+1
       while(abs(l0-l1)>eps){
         l0 <- l1
-        l1=l0-(l0+sum(log(1-nknk*(1-exp(-l0)))))/(1-sum(nknk/(exp(l0)*(1-nknk)+nknk)))
+        l1 <- l0-(l0+sum(log(1-nknk*(1-exp(-l0)))))/(1-sum(nknk/(exp(l0)*(1-nknk)+nknk)))
       }
     }
   }
@@ -63,6 +63,8 @@ mle <- function(nnk, nn){
 
 
 
+#############################################################################################
+#############################################################################################
 
 
 #' Derives profile-likelihood MLE of lineage frequencies
@@ -94,6 +96,10 @@ mle_fixed <- function(lambda, nnk)
 
 
 
+#############################################################################################
+#############################################################################################
+
+
 #' Derives lineage prevalence counts
 #'
 #' @param datmarker vector; a column of data corresponding
@@ -116,10 +122,12 @@ moi_nk <-
     nnk <- t(as.matrix(table(datmarker)))
     nn <- datmarker[samorder]
     nn <- as.matrix(length(nn[!is.na(nn)]))
+    obsperv <- nnk/as.vector(nn)
     rownames(nnk) <- "Nk = "
     rownames(nn) <- "N = "
+    rownames(obsperv) <- "Nk/N = "
     colnames(nn) <- ""
-    set_nk <- list(nn, nnk)
+    set_nk <- list(nn, nnk, obsperv)
     set_nk
   }
 

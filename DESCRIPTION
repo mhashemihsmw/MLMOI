@@ -14,6 +14,7 @@ Imports:
     methods (>= 3.5.1),
     base,
     utils,
+    tools (>= 3.5.2), 
     Rmpfr (>= 0.7-1),
 License: GPL-3
 Encoding: UTF-8

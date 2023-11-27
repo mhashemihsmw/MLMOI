@@ -5,7 +5,18 @@
 \title{Translates the standard ambiguity codes for nucleotides
 (codon decoder)}
 \usage{
-decoder_codon(y, c_l, r_w, aa_1, aa_2, compact, codon_s, coding, rw_col)
+decoder_codon(
+  y,
+  c_l,
+  r_w,
+  aa_1,
+  aa_2,
+  compact,
+  codon_s,
+  coding,
+  rw_col,
+  multsh
+)
 }
 \arguments{
 \item{y}{numeric vector; entries in a cell corresponding
@@ -33,6 +44,9 @@ marker.}
 between row and column in case of transposed data.
 Namely, \code{c("rows ", "row ", "column ", "columns
 ")}.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list of two elements: 1) a vector of codons in
@@ -48,6 +62,6 @@ Translates the standard ambiguity codes for
 \seealso{
 For further details see: \code{\link{moimport}},
   \code{\link{moi_marker}} and
-  \code{\link{corrector_aminoacid}}.
+  \code{\link{corrector_string}}.
 }
 \keyword{internal}

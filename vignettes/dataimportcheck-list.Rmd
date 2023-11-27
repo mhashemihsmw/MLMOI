@@ -8,34 +8,53 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<style type="text/css">
+h1.title {
+  font-size: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+h1 { /* Header 1 */
+  font-size: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+h2 { /* Header 2 */
+    font-size: 16px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+body{ /* Normal  */
+      font-size: 14px;
+      font-family: Verdana, Geneva, sans-serif;
+  }
+</style>
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
-<style type="text/css">
-body{ /* Normal  */
-      font-size: 20px;
-      font-family: Verdana, Geneva, sans-serif;
-  }
-  </style>
   
- <span style="color:Darkblue">Before using the function `moimport`, users need to check the dataset to see if it meets the following requirements:</span>
+Before using the function `moimport`, users need to check the dataset to see if it meets the following requirements:
 ------
 
-1. The dataset is placed in the  <span style="color:green">first worksheet</span> of the excel file and contains only <span style="color:green"> molecular data</span>,
+1. The dataset is placed in the  <span style="color:DarkGoldenRod">first worksheet</span> of the excel file and contains only <span style="color:DArkGoldenRod"> molecular data</span>,
 
-1. <span style="color:green">Sample IDs</span> are placed in the <span style="color:green">first column</span>,
+1. <span style="color:DArkGoldenRod">Sample IDs</span> are placed in the <span style="color:DArkGoldenRod">first column</span>,
 
-1. <span style="color:green"> Marker labels</span> are placed in the <span style="color:green">first row</span>,
+1. <span style="color:DArkGoldenRod"> Marker labels</span> are placed in the <span style="color:DArkGoldenRod">first row</span>,
 
-1. <span style="color:green">Sample IDs</span> and <span style="color:green">marker labels</span> must be <span style="color:green">unique</span>,
+1. <span style="color:DArkGoldenRod">Sample IDs</span> and <span style="color:DArkGoldenRod">marker labels</span> must be <span style="color:DArkGoldenRod">unique</span>,
 
-1. Entries which contain <span style="color:green">word or sentences are removed</span> from data,
+1. Entries which contain <span style="color:DArkGoldenRod">word or sentences are removed</span> from data,
 
-1. <span style="color:green">Metdata columns</span> are placed between sample IDs and molecular marker columns.
+1. <span style="color:DArkGoldenRod">Metadata columns</span> are placed between sample IDs and molecular marker columns.
 
-1. In case of <span style="color:green">multiple worksheet</span> dataset, all worksheets need to meet the above requirements.
+1. In case of <span style="color:DArkGoldenRod">multiple worksheet</span> dataset, all worksheets need to meet the above requirements (except 1.).
 
-1. In case of <span style="color:green">transposed datasets</span>, columns will be swaped with rows.
+1. In case of <span style="color:DArkGoldenRod">transposed datasets</span>, columns will be swapped with rows.
+
+------
+
+<span style="color:Darkred"> Note </span>:  The sample ID must not be confused with the patient's ID, the former refers to a particular sample taken from a patient, the latter to a unique patient. Several sample IDs can have the same patient's ID.
+
+<span style="color:Darkred"> Note </span>: In case of multiple-worksheet datasets, all marker labels across all worksheets need to be unique.

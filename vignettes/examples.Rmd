@@ -3,8 +3,10 @@ title: "Examples"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Examples}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -14,21 +16,188 @@ knitr::opts_chunk$set(
 )
 ```
 
-##Basic data import
+ `moimport(file,...)`
+---
+###Basic data import
 
-The function is called using the `moimport(file,...)`, where the mandatory argument `file` is a string specifying the path of the file to be imported.
+The function is called with `moimport(<file>,...)`, where the mandatory argument `<file>` is a string specifying the path of the file to be imported. Consider the following dataset:
 
-```{r, out.width='50%',include=TRUE, fig.align='center', fig.cap='...'}
-library(tempMLMOI)
-figbasic <- system.file("extdata", "basic-1.png", package = "tempMLMOI")
-knitr::include_graphics(figbasic)
+```{r, out.width='70%', include=TRUE, fig.align='center', echo = F}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "basic.png", package = "MLMOI")
+knitr::include_graphics(fig, auto_pdf = TRUE)
 ```
 
+provided by the package in the Excel file 'testDatabasic.xlsx'. The first column contains the sample IDs followed by marker columns. Marker labels are in the first row. All marker columns are of type 'STR' (default for argument `molecular`). The code below imports and transforms this dataset to standard format:
+```{r}
+infile <- system.file("extdata", "testDatabasic.xlsx", package = "MLMOI")
+Outfile <- moimport(file = infile)
+```
+The first six rows of the imported data are printed using the command:
+```{r}
+head(Outfile)
+```
+
+###Exporting the dataset in standard format
+
+If `export` is not an absolute path, the dataset will be stored in the current working directory:
+```{r, eval = FALSE}
+Outfile <- moimport(infile, export = "testDatabasicOut.xlsx")
+```
+
+###Importing datasets with metadata {#meta}
+
+The number of metadata columns are specified via argument `nummtd`. If Users want to retain metadata, `keepmtd = TRUE` need to be set. The dataset 'testDatametadata.xlsx' contains three metadata variables, as shown below:
+
+```{r, out.width='80%', include=TRUE, fig.align='center', echo = FALSE}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "metadata.png", package = "MLMOI")
+knitr::include_graphics(fig, auto_pdf = TRUE)
+```
+
+The appropriate code for importing this dataset is:
 
 ```{r}
-infile <- system.file("extdata", "testDatabasic.xlsx", package = "tempMLMOI")
-moimport(infile)
+infile <- system.file("extdata", "testDatametadata.xlsx", package = "MLMOI")
+Outfile <- moimport(infile, nummtd = 3, keepmtd = TRUE)
+```
+The first six rows of the imported data are printed using the command:
+```{r}
+head(Outfile)
 ```
 
-Examples continue...
+If users forget to set `nummtd`, the import function regards the metadata columns as marker columns. This usually causes various warnings.
 
+###Importing different types of molecular markers
+
+The Excel file 'testDatamt.xlsx' provided by the package contains different types of molecular data. This dataset is shown below
+
+```{r, out.width='80%',include=TRUE, fig.align='center', echo = FALSE}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "multi-type.png", package = "MLMOI")
+knitr::include_graphics(fig, auto_pdf = TRUE)
+```
+
+Marker columns start from third column. They are from left to right of data type 'STR', 'amino-acid', 'SNP', 'SNP', 'amino-acid' and 'codon'. The argument `molecular` needs to be set as a vector:
+
+```{r}
+infile <- system.file("extdata", "testDatamt.xlsx", package = "MLMOI")
+Outfile <- moimport(infile, nummtd = 1, molecular = c('str','amino','snp','snp','amino','codon'))
+```
+The first six rows of the imported data are printed using the command:
+```{r}
+head(Outfile)
+```
+
+Since the coding class of markers in this dataset are the default ones, the argument  `coding` is not specified.
+
+###Different molecular types with different coding classes
+
+If a dataset contains a molecular marker whose coding is not assumed as default in `moimport`, the argument `coding` needs to be set. Consider the following dataset:
+
+```{r, out.width='80%',include=TRUE, fig.align='center', echo = FALSE}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "multi-type-coding.png", package = "MLMOI")
+knitr::include_graphics(fig, auto_pdf = TRUE)
+```
+
+called 'testDatamtc.xlsx' provided by the package. The molecular markers in columns 3 ('SNP'), 5 ('STR') and 6 ('amino-acid') are not in default coding. Therefore, the argument `coding` needs to be set: 
+
+```{r}
+infile <- system.file("extdata", "testDatamtc.xlsx", package = "MLMOI")
+Outfile <- moimport(infile, nummtd = 1,
+         molecular = c('snp', 'str', 'str', 'amino', 'snp', 'codon'),
+         coding = c('iupac', 'integer', 'nearest', 'full', '4let', 'triplet'))
+```
+Here a warning is issued because the entry 'z' is not in coding 'iupac'. The last six rows of the imported data are printed using the command:
+```{r}
+tail(Outfile)
+```
+It can be seen that the entry 'z' is deleted.
+
+###Data from several worksheets
+
+The file 'testDatacomplex.xlsx' provided by the package contains datasets in multiple worksheets as shown below:
+
+```{r,include=TRUE, out.width = '80%', fig.align='center', fig.show = 'hold', echo = FALSE}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "complex.png", package = "MLMOI")
+
+knitr::include_graphics(fig)
+
+```
+
+The numbering determines the order of worksheets in the Excel file. Clearly, this is the case of multiple worksheet dataset. Hence the option `multsheets = TRUE` needs to be set. Notice that worksheet (2) is entered in transposed format. Thus, the option `transposed` needs to be set as a logical vector, specifying which worksheets are in transposed format. The following code imports the dataset:
+
+```{r}
+infile <- system.file("extdata", "testDatacomplex.xlsx", package = "MLMOI")
+Outfile <- moimport(infile, multsheets = TRUE, keepmtd = TRUE, nummtd = c(0, 2, 2, 0), transposed = c(FALSE, TRUE, FALSE, FALSE),
+         molecular = list(c('str', 'str', 'snp', 'snp'),
+                          c('amino', 'codon', 'snp', 'amino', 'codon'),
+                          c('codon', 'str'),
+                          c('str', 'amino', 'snp', 'str')),
+         coding = list(rep(c('integer', '4let'), each = 2), 
+                       c('1let', 'triplet', 'iupac', '3let', 'triplet'),
+                       c('triplet', 'integer'),
+                       c('integer', '1let', 'iupac', 'integer')))
+```
+Several warnings are issued because data in the first and second worksheets have several entry errors. The first seven rows of the imported data are printed using the command:
+```{r}
+head(Outfile, n = 7)
+```
+First warning of worksheet (2), addresses an entry with consecutive amino acids. Notice that, in spite of the warning the consecutive amino acids got converted to their equivalent three-letter designations after all.  
+
+
+`moimerge(file1, file2,...)`
+---
+
+
+###Merging datasets {#merge}
+
+Consider the datasets 'testDatamerge1.xlsx' and 'testDatamerge2.xlsx' from the package:
+
+```{r,include=TRUE, out.width = '80%', fig.align='center', fig.show = 'hold', echo = FALSE}
+library(MLMOI)
+#rJava::.jpackage("MLMOI")
+fig <- system.file("extdata/fig", "merge.png", package = "MLMOI")
+knitr::include_graphics(fig)
+```
+
+These datasets are already in standard format. Running the following code imports and merges the datasets:
+
+```{r}
+infile1 <- system.file("extdata", "testDatamerge1.xlsx", package = "MLMOI")
+infile2 <- system.file("extdata", "testDatamerge2.xlsx", package = "MLMOI")
+outfile <- moimerge(infile1, infile2, nummtd1 = 1, nummtd2 = 2, keepmtd = TRUE)
+
+```
+A warning is issued because the metadata information of sample 'samid10' differs in two datasets, implying a data entry error. The first six rows of the imported data are printed using the command:
+```{r}
+head(outfile, n = 6)
+```
+Users can set `export = <Outfile>` to export the merged dataset.
+
+`moimle(file,...)`
+---
+###Estimating parameters
+
+Consider again the dataset 'testDatametadata.xlsx' in section [Importing datasets with metadata](#meta). The following code derives the maximum-likelihood estimates (MLE) of the MOI parameter and lineage frequencies for each marker separately
+```{r}
+infile <- system.file("extdata", "testDatametadata.xlsx", package = "MLMOI")
+mle <- moimle(file = infile, nummtd = 3)
+mle$locus1
+```
+
+###Constraining parameters
+
+Consider again the dataset 'testDatasetmerge2' from section [Merging datasets](#merge).This dataset contains pathological data on marker 'position2', resulting in meaningless estimate $\lambda = 0$. By setting boundaries via argument `bounds`, the MLE for lineage frequencies is derived from profiling at the bounds using $\lambda_{min}$ or $\lambda_{max}$
+
+```{r}
+infile <- system.file("extdata", "testDatamerge2.xlsx", package = "MLMOI")
+moimle(file = infile, nummtd = 2, bounds = c(1.5, 2))
+```

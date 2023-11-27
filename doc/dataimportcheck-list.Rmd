@@ -1,0 +1,54 @@
+---
+title: "Data Import Check-list"
+output: rmarkdown::html_vignette
+font_adjustment: 5
+vignette: >
+  %\VignetteIndexEntry{Data Import Check-list}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style type="text/css">
+h1.title {
+  font-size: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+h1 { /* Header 1 */
+  font-size: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+h2 { /* Header 2 */
+    font-size: 16px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+body{ /* Normal  */
+      font-size: 14px;
+      font-family: Verdana, Geneva, sans-serif;
+  }
+</style>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+  
+Before using the function `moimport`, users need to check the dataset to see if it meets the following requirements:
+------
+
+1. The dataset is placed in the  <span style="color:DarkGoldenRod">first worksheet</span> of the excel file and contains only <span style="color:DArkGoldenRod"> molecular data</span>,
+
+1. <span style="color:DArkGoldenRod">Sample IDs</span> are placed in the <span style="color:DArkGoldenRod">first column</span>,
+
+1. <span style="color:DArkGoldenRod"> Marker labels</span> are placed in the <span style="color:DArkGoldenRod">first row</span>,
+
+1. <span style="color:DArkGoldenRod">Sample IDs</span> and <span style="color:DArkGoldenRod">marker labels</span> must be <span style="color:DArkGoldenRod">unique</span>,
+
+1. Entries which contain <span style="color:DArkGoldenRod">word or sentences are removed</span> from data,
+
+1. <span style="color:DArkGoldenRod">Metadata columns</span> are placed between sample IDs and molecular marker columns.
+
+1. In case of <span style="color:DArkGoldenRod">multiple worksheet</span> dataset, all worksheets need to meet the above requirements.
+
+1. In case of <span style="color:DArkGoldenRod">transposed datasets</span>, columns will be swapped with rows.

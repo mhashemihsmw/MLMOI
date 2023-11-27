@@ -7,10 +7,7 @@
 moi_labels(s_total)
 }
 \arguments{
-\item{multsheets}{logical; indicating whether data is
-contained in a single or multiple worksheets. The
-default value is \code{ multsheets = F}, corresponding
-to data contained in a single worksheet.}
+\item{s_total}{sample IDs.}
 }
 \value{
 a list which the first element is a numeric
@@ -26,7 +23,7 @@ Each dataset consists of several number of
   the row in which they start.
 }
 \seealso{
-For further details see: \code{\link{moimport}}
+For further details see: \code{moimport}
   and \code{\link{moi_duplicatefinder}}.
 }
 \keyword{internal}

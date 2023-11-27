@@ -3,3 +3,4 @@
 export(moimerge)
 export(moimle)
 export(moimport)
+importFrom(Rdpack,reprompt)

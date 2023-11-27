@@ -4,8 +4,17 @@
 \alias{moi_metadata}
 \title{Checks the metadata entries}
 \usage{
-moi_metadata(metadata, mtdlabels, nummtd, samorder, samall, lsam,
-  nomtdneeded)
+moi_metadata(
+  metadata,
+  mtdlabels,
+  nummtd,
+  samorder,
+  samall,
+  lsam,
+  nomtdneeded,
+  nomerge,
+  multsh
+)
 }
 \arguments{
 \item{metadata}{matrix; matrix of metadata columns.}
@@ -24,6 +33,9 @@ worksheet.}
 
 \item{nomtdneeded}{numeric vector; samples which need no
 metadata.}
+
+\item{multsh}{string; reports warnings for multiple
+worksheet datasets.}
 }
 \value{
 a list of following elements: 1) unique metadata
@@ -35,6 +47,6 @@ Checks if a sample has unique metadata
   entries.
 }
 \seealso{
-For further details see: \code{\link{moimport}}.
+For further details see: \code{moimport}.
 }
 \keyword{internal}
